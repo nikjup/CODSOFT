@@ -1,0 +1,20 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+
+data=pd.read_csv("C:\\Users\\abc\\Downloads\\titanic.csv")
+print(data)
+print(data.shape)
+print(data.info())
+print(data.isnull().sum())
+data=data.drop(columns='Cabin',axis=1)
+print(data)
+data['Age'].fillna(data['Age'].mean(),inplace=True)
+data['Embarked'].fillna(data['Embarked'].mode()[0],inplace=True)
+data['Fare'].fillna(data['Fare'].mode()[0],inplace=True)
+data.isnull().sum().sum()
+data['Survived'].value_counts()
